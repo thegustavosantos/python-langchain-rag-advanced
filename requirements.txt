@@ -9,3 +9,5 @@ pypdf
 langchain-experimental
 langchain-ollama
 langchain-milvus
+langchain-unstructured
+unstructured
