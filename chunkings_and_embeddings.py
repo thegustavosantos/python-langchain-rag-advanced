@@ -15,17 +15,20 @@ from transformers import AutoTokenizer, AutoModel
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
-FILES = DirectoryLoader("docs", glob="*.pdf", loader_cls=PyPDFLoader).load()
+FILES = DirectoryLoader("docs/creditcards", glob="*.pdf", loader_cls=PyPDFLoader).load()
 
 # Gerando tokens dos pdfs com huggingface tokenizer
-# embedding_tokenizer = AutoTokenizer.from_pretrained('intfloat/multilingual-e5-small')
-# hugging_face_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
-#     tokenizer=embedding_tokenizer, chunk_size=512, chunk_overlap=50
-# )
-# hugging_face_tokens = hugging_face_splitter.split_documents(FILES)
-# print(f"Number of documents: {len(FILES)}")
-# print(f"Number of tokens: {len(hugging_face_tokens)}")
-
+embedding_tokenizer = AutoTokenizer.from_pretrained('intfloat/multilingual-e5-small')
+hugging_face_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
+    tokenizer=embedding_tokenizer, chunk_size=512, chunk_overlap=50
+)
+hugging_face_tokens = hugging_face_splitter.split_documents(FILES)
+print(f"Number of documents: {len(FILES)}")
+print(f"Number of tokens: {len(hugging_face_tokens)}")
+print("Exemplos de tokens:")
+for i in range(min(3, len(hugging_face_tokens))):
+    print(f"Token {i}: {hugging_face_tokens[i].page_content[:100]}...")  # print first 100 characters of each token
+    
 
 # Quebra das chunks por sentido com LLM da OpenAI
 # semantic_splitter = SemanticChunker(OpenAIEmbeddings())

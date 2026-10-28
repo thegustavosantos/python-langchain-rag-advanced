@@ -17,10 +17,10 @@ def build_web_loader():
     return WebBaseLoader(URL)
 
 def build_pdf_directory_loader():
-    return DirectoryLoader("docs", glob="*.pdf", loader_cls=PyPDFLoader)
+    return DirectoryLoader("docs/creditcards", glob="*.pdf", loader_cls=PyPDFLoader)
 
 def build_recursive_url_loader():
-    URL = "https://docs.langchain.com/oss/python/langchain/overview"
+    URL = "https://docs/creditcards.langchain.com/oss/python/langchain/overview"
     return RecursiveUrlLoader(URL)
 
 documents = MergedDataLoader(
