@@ -1,10 +1,13 @@
 ipykernel
-langchain
-langchain-openai
+langchain>=1.0,<2.0
+langchain-classic>=1.0,<2.0
+langchain-core>=1.0,<2.0
+langchain-community>=0.4,<1.0
+langchain-text-splitters>=1.0,<2.0
+langchain-openai>=1.0,<2.0
 langgraph
 python-dotenv
 faiss-cpu
-langchain-community
 pypdf
 langchain-experimental
 langchain-ollama
