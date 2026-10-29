@@ -1,3 +1,10 @@
+from pathlib import Path
+import sys
+
+# Permite executar o arquivo diretamente, inclusive fora da raiz do projeto.
+if not __package__:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from dotenv import load_dotenv
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
